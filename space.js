@@ -1,26 +1,36 @@
+```javascript
 //board
 let tileSize = 32;
 let rows = 16;
 let columns = 16;
 
 let board;
-let boardWidth = tileSize * columns; // 32 * 16
-let boardHeight = tileSize * rows; // 32 * 16
 let context;
 
+// Calculate board size based on window dimensions
+let boardWidth = window.innerWidth;
+let boardHeight = window.innerHeight;
+
+// Ensure the board dimensions are multiples of tileSize
+boardWidth -= boardWidth % tileSize;
+boardHeight -= boardHeight % tileSize;
+
+// Calculate the number of rows and columns based on the adjusted board size
+let columns = Math.floor(boardWidth / tileSize);
+let rows = Math.floor(boardHeight / tileSize);
+
 //ship
-let shipWidth = tileSize*2;
+let shipWidth = tileSize * 2;
 let shipHeight = tileSize;
-let shipX = tileSize * columns/2 - tileSize;
-let shipY = tileSize * rows - tileSize*2;
+let shipX = tileSize * columns / 2 - tileSize;
+let shipY = tileSize * rows - tileSize * 2;
 
 let ship = {
-    x : shipX,
-    y : shipY,
-    width : shipWidth,
-    height : shipHeight
+    x: shipX,
+    y: shipY,
+    width: shipWidth,
+    height: shipHeight
 }
-
 
 let shipImg;
 let shipVelocityX = tileSize; //ship moving speed
